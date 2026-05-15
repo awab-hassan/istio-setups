@@ -70,10 +70,10 @@ metadata:
 spec:
   host: product-catalog
   subsets:
-  - name: v1
+  - name: version-1-pods
     labels:
       version: v1
-  - name: v2
+  - name: version-2-pods
     labels:
       version: v2
 ---
@@ -89,9 +89,11 @@ spec:
   - route:
     - destination:
         host: product-catalog
-        subset: v1
+        subset: version-1-pods
       weight: 80
     - destination:
         host: product-catalog
-        subset: v2
+        subset: version-2-pods
       weight: 20
+
+# So its like we have a service product-catalog that got all pods with label selector: app: product-catalog so now in destination rule we mention host: product-catalog (the name of service that got all product-catalog pods) now we make subsets here by making a subset version-1-pods telling that now pick pods that has lable version: v1 and we make another subnet version-2-pods telling that now pick pods that has lable version: v2 and then in virtual service we mention host: product-catalog (the name of service that got all product-catalog pods) and then we route traffic to these subsets by mentioning the weightage of traffic to be sent to each subset. In this case 80% traffic will be sent to version-1-pods and 20% traffic will be sent to version-2-pods.
