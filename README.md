@@ -4,7 +4,7 @@ For a better understanding of this, checkout this lecture on YouTube: [Istio, Ki
 
 ## Overview
 
-Istio is a service mesh that provides traffic management, security, observability, and resilience for microservices running inside Kubernetes — without modifying application code.
+Istio is a service mesh that provides traffic management, security, observability, and resilience for microservices running inside Kubernetes without modifying application code.
 
 Service mesh controls all the traffic coming in and going out. 
 
